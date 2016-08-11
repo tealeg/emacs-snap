@@ -14,8 +14,8 @@ apps:
       - gsettings
       - network
       - network-bind
-  emacsclient:
-    command: desktop-launch emacsclient
+  emacsclient-tealeg:
+    command: emacsclient-tealeg
     plugs:
       - home
       - x11
@@ -36,13 +36,12 @@ parts:
     plugin: copy
     files:
       emacs-tealeg.sh: bin/emacs-tealeg
+      emacsclient-tealeg.sh: bin/emacsclient-tealeg
   emacs:
     plugin: autotools
     source: http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
     source-type: tar
     install-via: prefix
-    configflags:
-      - --enable-locallisppath=$SNAP/share/emacs/24.5/lisp/
     build-packages:
       - libgif-dev
       - libxpm-dev

@@ -2,6 +2,8 @@
 ** About
 This repository contains a snapcraft.yaml file which can be used in
 conjunction with snapcraft to build a Snap package of GNU Emacs.
+** TODO
+Get emacsclient to work.
 ** License
 This snap, and GNU Emacs are both licensed under the terms of [[https://www.gnu.org/licenses/gpl-3.0.en.html][Version 3.0 of the GNU General Public License.]]
 
