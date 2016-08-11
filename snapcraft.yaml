@@ -1,6 +1,6 @@
 name: emacs-tealeg
-version: 24.5
-summary: GNU Emacs 24.5
+version: snapshot
+summary: GNU Emacs Snapshot
 description: An extensible, customizable, free/libre text editor -- and more.
 confinement: strict
 
@@ -28,8 +28,6 @@ apps:
     command: ebrowse
   etags:
     command: etags
-  grep-changelog:
-    command: grep-changelog
 
 parts:
   emacs-tealeg:
@@ -39,10 +37,11 @@ parts:
       emacsclient-tealeg.sh: bin/emacsclient-tealeg
   emacs:
     plugin: autotools
-    source: http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
-    source-type: tar
+    source: git://git.sv.gnu.org/emacs.git
+    source-type: git
     install-via: prefix
     build-packages:
+      - libgnutls-dev
       - libgif-dev
       - libxpm-dev
       - libjpeg-dev
@@ -51,6 +50,7 @@ parts:
       - libsm-dev
       - libxft-dev
     stage-packages:
+      - libgnutls30
       - libgif7
       - libxpm4
       - libjpeg8
