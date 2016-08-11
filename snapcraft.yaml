@@ -1,12 +1,12 @@
-name: emacs
+name: emacs-tealeg
 version: 24.5
 summary: GNU Emacs 24.5
 description: An extensible, customizable, free/libre text editor -- and more.
-confinement: devmode
+confinement: strict
 
 apps:
-  emacs:
-    command: desktop-launch emacs
+  emacs-tealeg:
+    command: emacs-tealeg
     plugs:
       - home
       - x11
@@ -32,11 +32,17 @@ apps:
     command: grep-changelog
 
 parts:
+  emacs-tealeg:
+    plugin: copy
+    files:
+      emacs-tealeg.sh: bin/emacs-tealeg
   emacs:
     plugin: autotools
     source: http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
     source-type: tar
     install-via: prefix
+    configflags:
+      - --enable-locallisppath=$SNAP/share/emacs/24.5/lisp/
     build-packages:
       - libgif-dev
       - libxpm-dev
