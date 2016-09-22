@@ -1,6 +1,6 @@
 name: emacs-tealeg
-version: snapshot
-summary: GNU Emacs Snapshot
+version: 25.1
+summary: GNU Emacs 25.1
 description: An extensible, customizable, free/libre text editor -- and more.
 confinement: strict
 
@@ -31,14 +31,15 @@ apps:
 
 parts:
   emacs-tealeg:
-    plugin: copy
-    files:
-      emacs-tealeg.sh: bin/emacs-tealeg
-      emacsclient-tealeg.sh: bin/emacsclient-tealeg
+    plugin: dump
+    source: scripts
+    organize:
+        emacs-tealeg.sh: bin/emacs-tealeg
+        emacsclient-tealeg.sh: bin/emacsclient-tealeg
   emacs:
     plugin: autotools
-    source: git://git.sv.gnu.org/emacs.git
-    source-type: git
+    source: http://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz
+    source-type: tar
     install-via: prefix
     build-packages:
       - libgnutls-dev
